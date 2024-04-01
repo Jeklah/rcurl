@@ -1,4 +1,4 @@
-use clap::{Arg, ArgMatches, Command};
+use clap::{Arg, ArgAction, ArgMatches, Command};
 
 pub fn get_arguments() -> ArgMatches {
     Command::new("rcurl - curl implemented in rust.")
@@ -10,26 +10,26 @@ pub fn get_arguments() -> ArgMatches {
             Arg::new("x-method")
                 .help("HTTP method which you want to use.")
                 .long("x-method")
-                .short("X"),
+                .short('X'),
         )
         .arg(
             Arg::new("data")
                 .help("Payload you want to send with the request.")
                 .long("data")
-                .short("d"),
+                .short('d'),
         )
         .arg(
             Arg::new("headers")
                 .help("Request header.")
                 .long("header")
-                .short("H")
+                .short('H')
                 .action(ArgAction::Append),
         )
         .arg(
             Arg::new("verbose")
                 .help("verbose mode.")
                 .long("verbose")
-                .short("V")
+                .short('v')
                 .action(clap::ArgAction::SetTrue),
         )
         .get_matches()
